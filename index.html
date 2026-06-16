@@ -240,16 +240,9 @@
         <div class="field"><label for="cfgDate">Date souhaitée</label><input type="date" id="cfgDate" name="date_retrait"></div>
         <div class="field">
           <label>Heure de retrait</label>
-          <div class="slots" id="slots">
-            <button type="button" class="slot" data-time="09:30">09:30</button>
-            <button type="button" class="slot" data-time="10:30">10:30</button>
-            <button type="button" class="slot complet" data-time="11:30" disabled>11:30<em>complet</em></button>
-            <button type="button" class="slot" data-time="14:00">14:00</button>
-            <button type="button" class="slot complet" data-time="15:00" disabled>15:00<em>complet</em></button>
-            <button type="button" class="slot" data-time="16:00">16:00</button>
-            <button type="button" class="slot" data-time="17:00">17:00</button>
-          </div>
-          <p class="slot-note">Les créneaux complets sont grisés automatiquement.</p>
+          <div class="slots" id="slots" hidden></div>
+          <p class="slot-hint" id="slotHint">Choisissez d'abord une date ci-dessus.</p>
+          <p class="slot-note">Créneaux selon les horaires d'ouverture. Les créneaux déjà complets sont grisés ; Joudia confirme votre commande sous 24h.</p>
         </div>
       </fieldset>
 
