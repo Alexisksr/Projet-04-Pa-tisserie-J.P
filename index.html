@@ -21,7 +21,8 @@
   "servesCuisine": "Cake design",
   "priceRange": "CHF",
   "address": { "@type": "PostalAddress", "addressLocality": "Lausanne", "addressRegion": "Vaud", "addressCountry": "CH" },
-  "areaServed": ["Lausanne", "Morges", "Vevey", "Montreux", "Nyon", "Genève"]
+  "telephone": "+41791564171",
+  "areaServed": "Lausanne"
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,6 +43,7 @@
 }
 *{ margin:0; padding:0; box-sizing:border-box; }
 html{ scroll-behavior:smooth; }
+[hidden]{ display:none !important; }
 body{ font-family:var(--font-body); background:var(--bg); color:var(--cream-dim); line-height:1.7; font-weight:300; -webkit-font-smoothing:antialiased; overflow-x:clip; }
 img{ max-width:100%; display:block; }
 a{ color:inherit; text-decoration:none; }
@@ -176,6 +178,16 @@ h1,h2,h3,h4{ font-family:var(--font-display); font-weight:500; color:var(--cream
 .config-section{ position:relative; z-index:1; background:var(--bg-2); border-top:1px solid var(--line-soft); padding:clamp(70px,9vw,120px) clamp(20px,5vw,68px); }
 .config-intro{ max-width:1180px; margin:0 auto 50px; text-align:center; }
 .config-intro .lead{ margin:0 auto; }
+.type-cards{ max-width:1180px; margin:0 auto 32px; display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.type-card{ text-align:left; display:flex; flex-direction:column; gap:9px; padding:32px clamp(24px,3vw,36px); border:1px solid var(--line-soft); border-radius:12px; background:var(--bg-3); transition:transform .3s var(--ease), border-color .3s; }
+.type-card:hover{ border-color:var(--line); transform:translateY(-4px); }
+.type-card.on{ border-color:var(--gold); background:rgba(201,161,74,.1); }
+.tc-name{ font-family:var(--font-display); font-size:1.9rem; color:var(--cream); }
+.tc-from{ font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gold-light); }
+.tc-desc{ color:var(--cream-dim); font-size:.95rem; line-height:1.6; }
+.tc-go{ margin-top:6px; font-size:.74rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); }
+.lead-note{ font-size:.8rem; color:var(--muted); margin:2px 0 14px; }
+@media (max-width:680px){ .type-cards{ grid-template-columns:1fr; } }
 .config-grid{ max-width:1180px; margin:0 auto; display:grid; grid-template-columns:1.5fr .9fr; gap:36px; align-items:start; }
 .config-form{ display:flex; flex-direction:column; gap:14px; }
 .step{ border:1px solid var(--line-soft); border-radius:12px; padding:28px clamp(20px,3vw,32px); background:var(--bg-3); }
@@ -327,11 +339,11 @@ h1,h2,h3,h4{ font-family:var(--font-display); font-weight:500; color:var(--cream
   <div class="scene-content hero-content">
     <div class="hero-eyebrow reveal"><span class="line"></span> Cake design · Lausanne</div>
     <h1 class="hero-title">
-      <span class="word">L'art</span> <span class="word">du</span> <span class="word it">gâteau,</span>
+      <span class="word" style="animation-delay:.45s">Imaginez</span> <span class="word it" style="animation-delay:.55s">l'exception,</span>
       <span class="line-break"></span>
-      <span class="word">en</span> <span class="word it">grand.</span>
+      <span class="word" style="animation-delay:.66s">nous</span> <span class="word" style="animation-delay:.74s">la</span> <span class="word it" style="animation-delay:.82s">façonnons.</span>
     </h1>
-    <p class="hero-sub reveal">Créez votre gâteau personnalisé en quelques minutes&nbsp;: taille, parfums, décoration — et votre prix s'affiche en direct. Fait main, à Lausanne.</p>
+    <p class="hero-sub reveal">Créez votre gâteau personnalisé en quelques minutes. Saveurs, décoration, finitions&nbsp;: chaque détail est pensé selon vos envies.</p>
     <div class="hero-actions reveal">
       <a href="#configurateur" class="btn btn-primary">Créer mon gâteau</a>
       <a href="#creations" class="btn btn-ghost">Voir les gâteaux <span>→</span></a>
@@ -345,7 +357,7 @@ h1,h2,h3,h4{ font-family:var(--font-display); font-weight:500; color:var(--cream
   <div class="scene-bg dim" data-parallax="0.15"><div class="ph ph-cover" data-label="Photo d'ambiance plein écran"><svg viewBox="0 0 64 64" class="ph-ico" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 50h40M16 50V36c0-6 5-10 16-10s16 4 16 10v14M16 43h32"/></svg></div></div>
   <div class="scene-shade strong"></div>
   <div class="scene-content center">
-    <p class="manifeste-text reveal">Le gâteau n'est pas un dessert.<br>C'est <span class="it">la pièce maîtresse</span> de vos moments&nbsp;: l'instant où tout le monde se tourne, où la fête commence.</p>
+    <p class="manifeste-text reveal">Créé pour être au cœur de vos célébrations, de vos photos et de <span class="it">vos souvenirs</span>.</p>
   </div>
 </section>
 
@@ -357,11 +369,11 @@ h1,h2,h3,h4{ font-family:var(--font-display); font-weight:500; color:var(--cream
     <p class="showcase-hint" id="showcaseHint">Faites défiler &nbsp;→</p>
   </div>
   <div class="showcase-track" id="showcaseTrack">
-    <article class="cake"><div class="cake-photo"><div class="ph ph-cover" data-label="Photo — Layer Cake"><svg viewBox="0 0 64 64" class="ph-ico" fill="none" stroke="currentColor" stroke-width="1"><path d="M14 50h36M18 50V40h28v10M22 40V30h20v10M26 30V21h12v9M32 21v-6M28 17l4-3 4 3"/></svg></div></div><div class="cake-info"><span class="cake-index">01 — 06</span><h3>Layer Cake Signature</h3><p>Étages de génoise moelleuse et crème onctueuse, finition lisse et décor sur mesure.</p><div class="cake-foot"><span class="price">dès CHF 45.–</span><button class="btn-order">Composer le mien <span>→</span></button></div></div></article>
+    <article class="cake"><div class="cake-photo"><div class="ph ph-cover" data-label="Photo — Layer Cake"><svg viewBox="0 0 64 64" class="ph-ico" fill="none" stroke="currentColor" stroke-width="1"><path d="M14 50h36M18 50V40h28v10M22 40V30h20v10M26 30V21h12v9M32 21v-6M28 17l4-3 4 3"/></svg></div></div><div class="cake-info"><span class="cake-index">01 — 06</span><h3>Layer Cake Signature</h3><p>Étages de génoise moelleuse et crème onctueuse, finition lisse et décor sur mesure.</p><div class="cake-foot"><span class="price">dès CHF 75.–</span><button class="btn-order">Composer le mien <span>→</span></button></div></div></article>
     <article class="cake"><div class="cake-photo"><div class="ph ph-cover" data-label="Photo — Wedding Cake"><svg viewBox="0 0 64 64" class="ph-ico" fill="none" stroke="currentColor" stroke-width="1"><path d="M16 52h32M22 52V41h20v11M26 41V31h12v10M29 31V23h6v8M32 23v-7M28 19l4-4 4 4"/></svg></div></div><div class="cake-info"><span class="cake-index">02 — 06</span><h3>Wedding Cake</h3><p>Plusieurs étages, fleurs et finitions précieuses. La pièce centrale de votre mariage.</p><div class="cake-foot"><span class="price">sur devis</span><button class="btn-order">Composer le mien <span>→</span></button></div></div></article>
-    <article class="cake"><div class="cake-photo"><div class="ph ph-cover" data-label="Photo — Number / Letter Cake"><svg viewBox="0 0 64 64" class="ph-ico" fill="none" stroke="currentColor" stroke-width="1"><path d="M24 48V20l-7 5M40 20h-8v11h8v17h-8"/><circle cx="19" cy="14" r="2"/><circle cx="45" cy="14" r="2"/></svg></div></div><div class="cake-info"><span class="cake-index">03 — 06</span><h3>Number & Letter Cake</h3><p>Chiffres et lettres en sablé délicat, crème, fruits frais et fleurs.</p><div class="cake-foot"><span class="price">dès CHF 55.–</span><button class="btn-order">Composer le mien <span>→</span></button></div></div></article>
-    <article class="cake"><div class="cake-photo"><div class="ph ph-cover" data-label="Photo — Drip Cake"><svg viewBox="0 0 64 64" class="ph-ico" fill="none" stroke="currentColor" stroke-width="1"><path d="M16 50h32M18 50V28c0-3 3-5 14-5s14 2 14 5v22"/><path d="M18 30c3 4 3 7 6 4s3-6 6-3 3 6 6 3 3-6 6-3 4 5 4 5"/></svg></div></div><div class="cake-info"><span class="cake-index">04 — 06</span><h3>Drip Cake</h3><p>Coulures gourmandes de chocolat ou caramel, garnitures généreuses.</p><div class="cake-foot"><span class="price">dès CHF 55.–</span><button class="btn-order">Composer le mien <span>→</span></button></div></div></article>
-    <article class="cake"><div class="cake-photo"><div class="ph ph-cover" data-label="Photo — Naked Cake"><svg viewBox="0 0 64 64" class="ph-ico" fill="none" stroke="currentColor" stroke-width="1"><path d="M16 50h32M18 50V32c0-4 4-7 14-7s14 3 14 7v18M18 39h28M18 32h28"/><circle cx="26" cy="20" r="2"/><circle cx="38" cy="22" r="2"/></svg></div></div><div class="cake-info"><span class="cake-index">05 — 06</span><h3>Naked Cake</h3><p>Étages apparents, crème délicate et fruits de saison. L'élégance naturelle.</p><div class="cake-foot"><span class="price">dès CHF 45.–</span><button class="btn-order">Composer le mien <span>→</span></button></div></div></article>
+    <article class="cake"><div class="cake-photo"><div class="ph ph-cover" data-label="Photo — Number / Letter Cake"><svg viewBox="0 0 64 64" class="ph-ico" fill="none" stroke="currentColor" stroke-width="1"><path d="M24 48V20l-7 5M40 20h-8v11h8v17h-8"/><circle cx="19" cy="14" r="2"/><circle cx="45" cy="14" r="2"/></svg></div></div><div class="cake-info"><span class="cake-index">03 — 06</span><h3>Number & Letter Cake</h3><p>Chiffres et lettres en sablé délicat, crème, fruits frais et fleurs.</p><div class="cake-foot"><span class="price">dès CHF 75.–</span><button class="btn-order">Composer le mien <span>→</span></button></div></div></article>
+    <article class="cake"><div class="cake-photo"><div class="ph ph-cover" data-label="Photo — Drip Cake"><svg viewBox="0 0 64 64" class="ph-ico" fill="none" stroke="currentColor" stroke-width="1"><path d="M16 50h32M18 50V28c0-3 3-5 14-5s14 2 14 5v22"/><path d="M18 30c3 4 3 7 6 4s3-6 6-3 3 6 6 3 3-6 6-3 4 5 4 5"/></svg></div></div><div class="cake-info"><span class="cake-index">04 — 06</span><h3>Drip Cake</h3><p>Coulures gourmandes de chocolat ou caramel, garnitures généreuses.</p><div class="cake-foot"><span class="price">dès CHF 75.–</span><button class="btn-order">Composer le mien <span>→</span></button></div></div></article>
+    <article class="cake"><div class="cake-photo"><div class="ph ph-cover" data-label="Photo — Naked Cake"><svg viewBox="0 0 64 64" class="ph-ico" fill="none" stroke="currentColor" stroke-width="1"><path d="M16 50h32M18 50V32c0-4 4-7 14-7s14 3 14 7v18M18 39h28M18 32h28"/><circle cx="26" cy="20" r="2"/><circle cx="38" cy="22" r="2"/></svg></div></div><div class="cake-info"><span class="cake-index">05 — 06</span><h3>Naked Cake</h3><p>Étages apparents, crème délicate et fruits de saison. L'élégance naturelle.</p><div class="cake-foot"><span class="price">dès CHF 75.–</span><button class="btn-order">Composer le mien <span>→</span></button></div></div></article>
     <article class="cake"><div class="cake-photo"><div class="ph ph-cover" data-label="Photo — Gâteau sculpté"><svg viewBox="0 0 64 64" class="ph-ico" fill="none" stroke="currentColor" stroke-width="1"><path d="M14 52h36M20 52V34c0-8 5-14 12-14s12 6 12 14v18M28 24c-2-4 0-9 4-9s6 5 4 9"/></svg></div></div><div class="cake-info"><span class="cake-index">06 — 06</span><h3>Gâteau sculpté sur mesure</h3><p>Une forme, un thème, un personnage&nbsp;: un gâteau entièrement modelé.</p><div class="cake-foot"><span class="price">sur devis</span><button class="btn-order">Composer le mien <span>→</span></button></div></div></article>
   </div>
   <div class="showcase-nav">
@@ -400,7 +412,7 @@ h1,h2,h3,h4{ font-family:var(--font-display); font-weight:500; color:var(--cream
       <li class="step reveal"><span class="step-num">01</span><h3>On imagine</h3><p>Vous composez votre gâteau, on vous conseille.</p></li>
       <li class="step reveal"><span class="step-num">02</span><h3>On confirme</h3><p>Devis instantané, acompte pour réserver la date.</p></li>
       <li class="step reveal"><span class="step-num">03</span><h3>On façonne</h3><p>Tout est fait main à l'atelier, sans raccourci.</p></li>
-      <li class="step reveal"><span class="step-num">04</span><h3>On livre</h3><p>Retrait au créneau choisi, au sommet de sa fraîcheur.</p></li>
+      <li class="step reveal"><span class="step-num">04</span><h3>Vous récupérez</h3><p>Retrait à l'atelier, au créneau choisi, au sommet de sa fraîcheur.</p></li>
     </ol>
   </div>
 </section>
@@ -411,8 +423,8 @@ h1,h2,h3,h4{ font-family:var(--font-display); font-weight:500; color:var(--cream
     <div class="intro-block center reveal"><span class="label">Ils ont goûté</span><h2 class="title">On en parle.</h2></div>
     <div class="avis-grid">
       <figure class="avis reveal"><div class="stars">★★★★★</div><blockquote>Le layer cake d'anniversaire de ma fille était magnifique et délicieux. Un vrai coup de cœur&nbsp;!</blockquote><figcaption><span class="avis-ph"></span><span><strong>Sarah M.</strong>Lausanne</span></figcaption></figure>
-      <figure class="avis reveal"><div class="stars">★★★★★</div><blockquote>Notre wedding cake était sublime et tellement bon. À l'écoute du début à la fin.</blockquote><figcaption><span class="avis-ph"></span><span><strong>Élodie & Marc</strong>Vevey</span></figcaption></figure>
-      <figure class="avis reveal"><div class="stars">★★★★★</div><blockquote>Un gâteau sculpté incroyable pour les 5 ans de mon fils. Bluffant de réalisme et excellent.</blockquote><figcaption><span class="avis-ph"></span><span><strong>Damien R.</strong>Morges</span></figcaption></figure>
+      <figure class="avis reveal"><div class="stars">★★★★★</div><blockquote>Notre wedding cake était sublime et tellement bon. À l'écoute du début à la fin.</blockquote><figcaption><span class="avis-ph"></span><span><strong>Élodie & Marc</strong>Lausanne</span></figcaption></figure>
+      <figure class="avis reveal"><div class="stars">★★★★★</div><blockquote>Un gâteau sculpté incroyable pour les 5 ans de mon fils. Bluffant de réalisme et excellent.</blockquote><figcaption><span class="avis-ph"></span><span><strong>Damien R.</strong>Lausanne</span></figcaption></figure>
     </div>
   </div>
 </section>
@@ -421,95 +433,170 @@ h1,h2,h3,h4{ font-family:var(--font-display); font-weight:500; color:var(--cream
 <section class="config-section" id="configurateur">
   <div class="config-intro reveal">
     <span class="label">Sur mesure</span>
-    <h2 class="title">Créez votre gâteau personnalisé<br>en quelques minutes.</h2>
-    <p class="lead">Composez chaque détail, votre prix s'affiche en direct. Un acompte confirme la date — le reste au retrait.</p>
+    <h2 class="title">Composez votre gâteau,<br>nous vous envoyons le devis.</h2>
+    <p class="lead">Choisissez chaque détail. Joudia revient vers vous sous 24h avec une estimation personnalisée et confirme la date. Sans engagement.</p>
   </div>
 
-  <form class="config-grid" id="cakeForm" action="https://formspree.io/f/VOTRE_ID_FORMSPREE" method="POST">
+  <!-- CHOIX DU TYPE -->
+  <div class="type-cards" id="typeCards">
+    <button type="button" class="type-card" data-type="layer">
+      <span class="tc-name">Layer Cake</span>
+      <span class="tc-from">À partir de CHF 75.–</span>
+      <span class="tc-desc">Plusieurs couches de génoise et de garniture, finition lisse, entièrement personnalisable. Idéal anniversaires et célébrations.</span>
+      <span class="tc-go">Composer ce gâteau →</span>
+    </button>
+    <button type="button" class="type-card" data-type="etages">
+      <span class="tc-name">Gâteau à étages</span>
+      <span class="tc-from">À partir de CHF 180.–</span>
+      <span class="tc-desc">Plusieurs niveaux, plus de possibilités de décoration. Idéal grands anniversaires, baptêmes, baby showers et événements.</span>
+      <span class="tc-go">Composer ce gâteau →</span>
+    </button>
+  </div>
+
+  <form class="config-grid" id="cakeForm" action="https://formspree.io/f/VOTRE_ID_FORMSPREE" method="POST" hidden>
     <div class="config-form">
 
-      <fieldset class="step">
+      <!-- Taille / invités (selon type) -->
+      <fieldset class="step" data-q="layer">
         <legend><span class="step-no">01</span> Taille</legend>
         <div class="opts" data-group="taille">
-          <button type="button" class="opt" data-val="6 parts" data-price="38">6 parts<small>38 CHF</small></button>
-          <button type="button" class="opt" data-val="8 parts" data-price="45">8 parts<small>45 CHF</small></button>
-          <button type="button" class="opt" data-val="10 parts" data-price="55">10 parts<small>55 CHF</small></button>
-          <button type="button" class="opt" data-val="15 parts" data-price="75">15 parts<small>75 CHF</small></button>
-          <button type="button" class="opt" data-val="20 parts" data-price="95">20 parts<small>95 CHF</small></button>
-          <button type="button" class="opt" data-val="30 parts" data-price="135">30 parts<small>135 CHF</small></button>
+          <button type="button" class="opt" data-val="6-8 parts">6 à 8 parts</button>
+          <button type="button" class="opt" data-val="10 parts">10 parts</button>
+          <button type="button" class="opt" data-val="12 parts">12 parts</button>
+          <button type="button" class="opt" data-val="15 parts">15 parts</button>
+          <button type="button" class="opt" data-val="20 parts">20 parts</button>
+        </div>
+      </fieldset>
+      <fieldset class="step" data-q="etages">
+        <legend><span class="step-no">01</span> Nombre d'invités</legend>
+        <div class="opts" data-group="invites">
+          <button type="button" class="opt" data-val="20-30 invités">20 à 30 invités</button>
+          <button type="button" class="opt" data-val="30-40 invités">30 à 40 invités</button>
+          <button type="button" class="opt" data-val="40-50 invités">40 à 50 invités</button>
+          <button type="button" class="opt" data-val="50-60 invités">50 à 60 invités</button>
+          <button type="button" class="opt" data-val="60-80 invités">60 à 80 invités</button>
+        </div>
+      </fieldset>
+
+      <!-- Forme (layer) / Niveaux (étages) -->
+      <fieldset class="step" data-q="layer">
+        <legend><span class="step-no">02</span> Forme</legend>
+        <div class="opts" data-group="forme">
+          <button type="button" class="opt" data-val="Ronde">Ronde</button>
+          <button type="button" class="opt" data-val="Cœur">Cœur</button>
+          <button type="button" class="opt" data-val="Étoile">Étoile</button>
+        </div>
+      </fieldset>
+      <fieldset class="step" data-q="etages">
+        <legend><span class="step-no">02</span> Nombre de niveaux</legend>
+        <div class="opts" data-group="niveaux">
+          <button type="button" class="opt" data-val="2 niveaux">2 niveaux</button>
+          <button type="button" class="opt" data-val="3 niveaux">3 niveaux</button>
+          <button type="button" class="opt" data-val="4 niveaux">4 niveaux</button>
         </div>
       </fieldset>
 
       <fieldset class="step">
-        <legend><span class="step-no">02</span> Ganache</legend>
-        <div class="opts" data-group="ganache">
-          <button type="button" class="opt" data-val="Chocolat noir" data-price="0">Chocolat noir<small>inclus</small></button>
-          <button type="button" class="opt" data-val="Chocolat au lait" data-price="0">Chocolat au lait<small>inclus</small></button>
-          <button type="button" class="opt" data-val="Chocolat blanc" data-price="0">Chocolat blanc<small>inclus</small></button>
-          <button type="button" class="opt" data-val="Vanille" data-price="0">Vanille<small>inclus</small></button>
-          <button type="button" class="opt" data-val="Pistache" data-price="5">Pistache<small>+5 CHF</small></button>
-          <button type="button" class="opt" data-val="Café" data-price="0">Café<small>inclus</small></button>
+        <legend><span class="step-no">03</span> Génoise</legend>
+        <div class="opts" data-group="genoise">
+          <button type="button" class="opt" data-val="Vanille">Vanille</button>
+          <button type="button" class="opt" data-val="Chocolat">Chocolat</button>
         </div>
       </fieldset>
 
       <fieldset class="step">
-        <legend><span class="step-no">03</span> Crème</legend>
+        <legend><span class="step-no">04</span> Crème</legend>
         <div class="opts" data-group="creme">
-          <button type="button" class="opt" data-val="Chantilly vanille" data-price="0">Chantilly vanille<small>inclus</small></button>
-          <button type="button" class="opt" data-val="Mascarpone vanille" data-price="3">Mascarpone vanille<small>+3 CHF</small></button>
-          <button type="button" class="opt" data-val="Crème au beurre légère" data-price="0">Crème au beurre légère<small>inclus</small></button>
+          <button type="button" class="opt" data-val="Vanille">Vanille</button>
+          <button type="button" class="opt" data-val="Framboise">Framboise</button>
+          <button type="button" class="opt" data-val="Chocolat blanc">Chocolat blanc</button>
+          <button type="button" class="opt" data-val="Chocolat noir">Chocolat noir</button>
+          <button type="button" class="opt" data-val="Chocolat au lait">Chocolat au lait</button>
+          <button type="button" class="opt" data-val="Spéculoos">Spéculoos</button>
+          <button type="button" class="opt" data-val="Nutella">Nutella</button>
+          <button type="button" class="opt" data-val="Peanut Butter">Peanut Butter</button>
         </div>
       </fieldset>
 
       <fieldset class="step">
-        <legend><span class="step-no">04</span> Fourrage</legend>
-        <div class="opts" data-group="fourrage">
-          <button type="button" class="opt" data-val="Fraise" data-price="0">Fraise<small>inclus</small></button>
-          <button type="button" class="opt" data-val="Framboise" data-price="0">Framboise<small>inclus</small></button>
-          <button type="button" class="opt" data-val="Mangue" data-price="3">Mangue<small>+3 CHF</small></button>
-          <button type="button" class="opt" data-val="Kinder" data-price="5">Kinder<small>+5 CHF</small></button>
-          <button type="button" class="opt" data-val="Oreo" data-price="4">Oreo<small>+4 CHF</small></button>
-          <button type="button" class="opt" data-val="Nutella" data-price="4">Nutella<small>+4 CHF</small></button>
+        <legend><span class="step-no">05</span> Garniture</legend>
+        <div class="opts" data-group="garniture">
+          <button type="button" class="opt" data-val="Sans garniture">Sans garniture</button>
+          <button type="button" class="opt" data-val="Fraise">Fraise</button>
+          <button type="button" class="opt" data-val="Framboise">Framboise</button>
+          <button type="button" class="opt" data-val="Myrtille">Myrtille</button>
+          <button type="button" class="opt" data-val="Mangue">Mangue</button>
+          <button type="button" class="opt" data-val="Spéculoos">Spéculoos</button>
+          <button type="button" class="opt" data-val="Oreo">Oreo</button>
+          <button type="button" class="opt" data-val="Cacahuètes">Cacahuètes</button>
+          <button type="button" class="opt" data-val="Autre">Autre (à préciser)</button>
         </div>
       </fieldset>
 
       <fieldset class="step">
-        <legend><span class="step-no">05</span> Décoration <span class="step-hint">plusieurs choix possibles</span></legend>
+        <legend><span class="step-no">06</span> Coulis</legend>
+        <div class="opts" data-group="coulis">
+          <button type="button" class="opt" data-val="Sans coulis">Sans coulis</button>
+          <button type="button" class="opt" data-val="Fruit rouge">Fruit rouge</button>
+          <button type="button" class="opt" data-val="Fruit exotique">Fruit exotique</button>
+          <button type="button" class="opt" data-val="Caramel">Caramel</button>
+          <button type="button" class="opt" data-val="Nutella">Nutella</button>
+          <button type="button" class="opt" data-val="Spéculoos">Spéculoos</button>
+        </div>
+      </fieldset>
+
+      <fieldset class="step">
+        <legend><span class="step-no">07</span> Couleurs souhaitées <span class="step-hint">facultatif</span></legend>
+        <div class="field"><input type="text" id="cfgCouleurs" name="couleurs" placeholder="ex. rose poudré et doré, ou à définir ensemble"></div>
+      </fieldset>
+
+      <fieldset class="step">
+        <legend><span class="step-no">08</span> Décoration <span class="step-hint">plusieurs choix possibles</span></legend>
         <div class="opts checks" data-group="deco">
-          <button type="button" class="opt opt-check" data-val="Fleurs" data-price="6"><span class="box"></span>Fleurs<small>+6 CHF</small></button>
-          <button type="button" class="opt opt-check" data-val="Dorure" data-price="4"><span class="box"></span>Dorure<small>+4 CHF</small></button>
-          <button type="button" class="opt opt-check" data-val="Perles" data-price="3"><span class="box"></span>Perles<small>+3 CHF</small></button>
-          <button type="button" class="opt opt-check" data-val="Macarons" data-price="8"><span class="box"></span>Macarons<small>+8 CHF</small></button>
-          <button type="button" class="opt opt-check" data-val="Chocolats" data-price="5"><span class="box"></span>Chocolats<small>+5 CHF</small></button>
-          <button type="button" class="opt opt-check" data-val="Fruits frais" data-price="6"><span class="box"></span>Fruits frais<small>+6 CHF</small></button>
-          <button type="button" class="opt opt-check" data-val="Photo imprimée" data-price="10"><span class="box"></span>Photo imprimée<small>+10 CHF</small></button>
-          <button type="button" class="opt opt-check" data-val="Écriture personnalisée" data-price="4"><span class="box"></span>Écriture personnalisée<small>+4 CHF</small></button>
+          <button type="button" class="opt opt-check" data-val="Perles"><span class="box"></span>Perles</button>
+          <button type="button" class="opt opt-check" data-val="Paillettes"><span class="box"></span>Paillettes</button>
+          <button type="button" class="opt opt-check" data-val="Dorure légère"><span class="box"></span>Dorure légère</button>
+          <button type="button" class="opt opt-check" data-val="Dorure importante"><span class="box"></span>Dorure importante</button>
+          <button type="button" class="opt opt-check" data-val="Gâteau entièrement doré"><span class="box"></span>Gâteau entièrement doré</button>
+          <button type="button" class="opt opt-check" data-val="Fleurs artificielles"><span class="box"></span>Fleurs artificielles</button>
+          <button type="button" class="opt opt-check" data-val="Fleurs fraîches"><span class="box"></span>Fleurs fraîches</button>
+          <button type="button" class="opt opt-check" data-val="Fruits frais"><span class="box"></span>Fruits frais</button>
+          <button type="button" class="opt opt-check" data-val="Photo imprimée"><span class="box"></span>Photo imprimée</button>
+          <button type="button" class="opt opt-check" data-val="Figurines"><span class="box"></span>Figurines</button>
+          <button type="button" class="opt opt-check" data-val="Rubans"><span class="box"></span>Rubans</button>
+          <button type="button" class="opt opt-check" data-val="Nœuds"><span class="box"></span>Nœuds</button>
+          <button type="button" class="opt opt-check" data-val="Écriture personnalisée"><span class="box"></span>Écriture personnalisée</button>
+          <button type="button" class="opt opt-check" data-val="Effet vintage (Lambeth)"><span class="box"></span>Effet vintage (Lambeth)</button>
+          <button type="button" class="opt opt-check" data-val="Effet palette"><span class="box"></span>Effet palette (spatule)</button>
+          <button type="button" class="opt opt-check" data-val="Autre déco"><span class="box"></span>Autre (à préciser)</button>
         </div>
       </fieldset>
 
       <fieldset class="step">
-        <legend><span class="step-no">06</span> Message & inspiration</legend>
-        <div class="field"><label for="cfgTexte">Texte sur le gâteau</label><input type="text" id="cfgTexte" name="texte_gateau" placeholder="Joyeux anniversaire Lina"></div>
+        <legend><span class="step-no">09</span> Message & inspiration</legend>
+        <div class="field"><label for="cfgTexte">Texte à inscrire <span class="step-hint">ou rien</span></label><input type="text" id="cfgTexte" name="texte_gateau" placeholder="Joyeux anniversaire Lina"></div>
         <div class="field">
-          <label>Inspiration <span class="step-hint">jusqu'à 5 photos</span></label>
+          <label>Photos d'inspiration <span class="step-hint">jusqu'à 5</span></label>
           <label class="dropzone" for="cfgPhotos"><span class="dz-ico">＋</span><span>Ajouter des photos d'inspiration</span><input type="file" id="cfgPhotos" name="inspiration" accept="image/*" multiple hidden></label>
           <div class="photo-preview" id="photoPreview"></div>
         </div>
+        <div class="field"><label for="cfgCommentaires">Commentaires</label><textarea id="cfgCommentaires" name="commentaires" placeholder="Allergies, thème, détails du « autre », précisions…"></textarea></div>
       </fieldset>
 
       <fieldset class="step">
-        <legend><span class="step-no">07</span> Date & retrait</legend>
+        <legend><span class="step-no">10</span> Date & retrait</legend>
         <div class="field"><label for="cfgDate">Date souhaitée</label><input type="date" id="cfgDate" name="date_retrait"></div>
+        <p class="lead-note" id="leadNote">Layer cake : 5 jours à l'avance conseillés. Gâteau à étages : 1 à 3 semaines selon la taille.</p>
         <div class="field">
           <label>Heure de retrait</label>
           <div class="slots" id="slots" hidden></div>
           <p class="slot-hint" id="slotHint">Choisissez d'abord une date ci-dessus.</p>
-          <p class="slot-note">Créneaux selon les horaires d'ouverture. Les créneaux déjà complets sont grisés ; Joudia confirme votre commande sous 24h.</p>
+          <p class="slot-note">Créneaux selon les horaires d'ouverture. Retrait uniquement, à l'atelier. Joudia confirme votre date sous 24h.</p>
         </div>
       </fieldset>
 
       <fieldset class="step">
-        <legend><span class="step-no">08</span> Vos coordonnées</legend>
+        <legend><span class="step-no">11</span> Vos coordonnées</legend>
         <div class="form-row">
           <div class="field"><label for="cfgPrenom">Prénom *</label><input type="text" id="cfgPrenom" name="prenom" placeholder="Lina" required></div>
           <div class="field"><label for="cfgNom">Nom *</label><input type="text" id="cfgNom" name="nom" placeholder="Müller" required></div>
@@ -521,32 +608,30 @@ h1,h2,h3,h4{ font-family:var(--font-display); font-weight:500; color:var(--cream
       </fieldset>
     </div>
 
-    <!-- RÉCAP / PRIX INSTANTANÉ -->
+    <!-- RÉCAP DES CHOIX (sans prix) -->
     <aside class="config-summary">
       <div class="summary-card">
         <h3>Votre gâteau</h3>
-        <ul class="summary-lines" id="summaryLines"><li class="empty">Commencez par choisir une taille…</li></ul>
-        <div class="summary-total"><span>Total</span><strong id="sumTotal">—</strong></div>
-        <div class="summary-sub"><span>Acompte (30%)</span><span id="sumAcompte">—</span></div>
-        <div class="summary-sub"><span>Reste au retrait</span><span id="sumReste">—</span></div>
+        <ul class="summary-lines" id="summaryLines"><li class="empty">Vos choix s'afficheront ici…</li></ul>
         <button type="submit" class="form-btn" id="configSubmit">Envoyer ma demande <span>→</span></button>
-        <p class="form-note">L'acompte confirme la date (paiement PayPal — bientôt). Réponse sous 24h.</p>
+        <p class="form-note">Joudia vous envoie une estimation et confirme la date sous 24h. Paiement par PayPal ou en espèces.</p>
       </div>
     </aside>
 
-    <!-- hidden : résumé envoyé à Joudia -->
+    <!-- champs cachés : envoyés à Joudia (avec l'estimation) -->
+    <input type="hidden" name="type_gateau" id="typeField">
     <input type="hidden" name="recapitulatif" id="recapField">
-    <input type="hidden" name="prix_total" id="prixField">
+    <input type="hidden" name="estimation_interne" id="estimationField">
   </form>
 
-  <!-- CONFIRMATION -->
+  <!-- CONFIRMATION (sans prix côté cliente) -->
   <div class="config-confirm" id="configConfirm" hidden>
     <div class="confirm-card">
       <div class="confirm-check">✓</div>
       <h3 id="confirmTitle">Merci&nbsp;!</h3>
-      <p class="confirm-lead">Votre demande de gâteau a bien été enregistrée. Voici le message que vous recevriez par SMS&nbsp;:</p>
+      <p class="confirm-lead">Votre demande a bien été enregistrée. Voici le message que vous recevriez par SMS&nbsp;:</p>
       <div class="confirm-sms" id="confirmSms"></div>
-      <p class="confirm-note">Joudia vous recontacte sous 24h pour confirmer et régler l'acompte.</p>
+      <p class="confirm-note">Joudia revient vers vous sous 24h avec le devis et la confirmation de la date.</p>
       <button type="button" class="btn btn-ghost" id="confirmReset">Composer un autre gâteau</button>
     </div>
   </div>
@@ -558,9 +643,9 @@ h1,h2,h3,h4{ font-family:var(--font-display); font-weight:500; color:var(--cream
     <div class="intro-block center reveal"><span class="label">Bon à savoir</span><h2 class="title">Questions fréquentes</h2></div>
     <div class="faq-list">
       <details class="faq reveal"><summary>Quel délai faut-il prévoir&nbsp;?</summary><p>Comptez 48 à 72h pour la plupart des gâteaux. Pour les wedding cakes et grandes pièces, prévoyez idéalement une à deux semaines.</p></details>
-      <details class="faq reveal"><summary>Comment se passe le paiement&nbsp;?</summary><p>Un acompte confirme votre date, le reste se règle au retrait (TWINT, carte ou espèces). Le paiement en ligne de l'acompte arrive bientôt.</p></details>
+      <details class="faq reveal"><summary>Comment se passe le paiement&nbsp;?</summary><p>Le paiement se fait par PayPal ou en espèces au retrait. Pour les grandes pièces, un acompte peut être demandé pour confirmer la date.</p></details>
       <details class="faq reveal"><summary>Gérez-vous les allergies et régimes&nbsp;?</summary><p>Oui. Précisez vos contraintes dans le message du gâteau (sans gluten, sans lactose, allergènes…), nous adaptons autant que possible.</p></details>
-      <details class="faq reveal"><summary>Livrez-vous&nbsp;?</summary><p>Le retrait se fait à l'atelier à Lausanne. La livraison est possible sur demande dans la région lémanique.</p></details>
+      <details class="faq reveal"><summary>Où récupérer mon gâteau&nbsp;?</summary><p>Uniquement au retrait, à l'atelier à Lausanne. Nous ne faisons pas de livraison.</p></details>
     </div>
   </div>
 </section>
@@ -570,8 +655,8 @@ h1,h2,h3,h4{ font-family:var(--font-display); font-weight:500; color:var(--cream
   <div class="footer-inner">
     <div class="footer-brand"><span class="logo-main">Maison Joudia</span><p>Atelier de cake design.<br>Gâteaux sur mesure faits main à Lausanne.</p></div>
     <div class="footer-col"><h4>Naviguer</h4><a href="#creations">Les gâteaux</a><a href="#sur-mesure">Sur mesure</a><a href="#atelier">L'atelier</a><a href="#configurateur">Créer mon gâteau</a></div>
-    <div class="footer-col"><h4>Contact</h4><a href="tel:0780000000">078 000 00 00</a><a href="mailto:contact@maison-joudia.ch">contact@maison-joudia.ch</a><span>Lausanne · Région lémanique</span></div>
-    <div class="footer-col"><h4>Suivez-nous</h4><a href="#">Instagram</a><a href="#">Facebook</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="tel:0791564171">079 156 41 71</a><a href="mailto:contact@maison-joudia.ch">contact@maison-joudia.ch</a><span>Lausanne</span></div>
+    <div class="footer-col"><h4>Suivez-nous</h4><a href="#">Instagram</a><a href="#">TikTok</a></div>
   </div>
   <div class="footer-bar"><span>© 2026 Maison Joudia · Cake design</span><span class="footer-credit">Site réalisé par <a href="https://alk-concept.ch" target="_blank" rel="noopener">ALK Concept</a></span></div>
 </footer>
@@ -684,58 +769,115 @@ if (parBgs.length && !reduceMotion) {
 const faqs = document.querySelectorAll('.faq');
 faqs.forEach(d => d.addEventListener('toggle', () => { if (d.open) faqs.forEach(o => { if (o !== d) o.open = false; }); }));
 
-/* ─── CONFIGURATEUR DE GÂTEAU ─── */
+/* ─── CONFIGURATEUR DE GÂTEAU (2 types, prix masqués côté cliente) ─── */
 const cakeForm = document.getElementById('cakeForm');
 if (cakeForm) {
-  let total = 0, acompte = 0, reste = 0;
+  let currentType = null;
   let photos = [];
   let chosenTime = null;
   const sel = g => document.querySelector(`.opts[data-group="${g}"] .opt.on`);
 
+  // ── Tarification INTERNE (jamais affichée à la cliente) ──
+  const GENOISE = { 'Vanille': 0, 'Chocolat': 0 };
+  const CREME = { 'Vanille': 0, 'Framboise': 5, 'Chocolat blanc': 0, 'Chocolat noir': 0, 'Chocolat au lait': 0, 'Spéculoos': 5, 'Nutella': 5, 'Peanut Butter': 5 };
+  const GARNITURE = { 'Sans garniture': 0, 'Fraise': 5, 'Framboise': 5, 'Myrtille': 5, 'Mangue': 5, 'Spéculoos': 5, 'Oreo': 5, 'Cacahuètes': 5, 'Autre': [0, 0] };
+  const COULIS = { 'Sans coulis': 0, 'Fruit rouge': 5, 'Fruit exotique': 5, 'Caramel': 5, 'Nutella': 5, 'Spéculoos': 5 };
+  const DECO = { 'Perles': 5, 'Paillettes': 5, 'Dorure légère': 10, 'Dorure importante': 25, 'Gâteau entièrement doré': 'DORE', 'Fleurs artificielles': 15, 'Fleurs fraîches': [25, 50], 'Fruits frais': [10, 20], 'Photo imprimée': 10, 'Figurines': [10, 50], 'Rubans': 5, 'Nœuds': 5, 'Écriture personnalisée': 0, 'Effet vintage (Lambeth)': [20, 50], 'Effet palette': 10, 'Autre déco': [0, 0] };
+  const PRICING = {
+    layer: { base: 75, doreDeco: 50, sizeGroup: 'taille', size: { '6-8 parts': 0, '10 parts': 15, '12 parts': 25, '15 parts': 40, '20 parts': 60 }, extraGroup: 'forme', extra: { 'Ronde': 0, 'Cœur': 10, 'Étoile': 20 } },
+    etages: { base: 180, doreDeco: 60, sizeGroup: 'invites', size: { '20-30 invités': 0, '30-40 invités': 50, '40-50 invités': 100, '50-60 invités': 150, '60-80 invités': 250 }, extraGroup: 'niveaux', extra: { '2 niveaux': 0, '3 niveaux': 80, '4 niveaux': 180 } }
+  };
+
+  const linesEl = document.getElementById('summaryLines');
+  const typeField = document.getElementById('typeField');
+  const dateInput = document.getElementById('cfgDate');
+  const couleursInput = document.getElementById('cfgCouleurs');
+  const submitBtn = document.getElementById('configSubmit');
+
+  // ── choix du type ──
+  const typeCards = Array.from(document.querySelectorAll('.type-card'));
+  typeCards.forEach(card => card.addEventListener('click', () => {
+    const t = card.dataset.type;
+    if (currentType === t && !cakeForm.hidden) { cakeForm.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+    currentType = t;
+    typeCards.forEach(c => c.classList.toggle('on', c === card));
+    typeField.value = t === 'layer' ? 'Layer Cake' : 'Gâteau à étages';
+    document.querySelectorAll('#cakeForm .step[data-q]').forEach(fs => { fs.hidden = fs.dataset.q !== t; });
+    document.querySelectorAll('.opt.on').forEach(o => o.classList.remove('on'));
+    cakeForm.hidden = false;
+    clearError();
+    updateSummary();
+    cakeForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }));
+
+  // ── sélection des options ──
   document.querySelectorAll('.opts:not(.checks) .opt').forEach(opt => {
     opt.addEventListener('click', () => {
       opt.closest('.opts').querySelectorAll('.opt').forEach(o => o.classList.remove('on'));
       opt.classList.add('on');
-      recalc();
+      updateSummary();
     });
   });
   document.querySelectorAll('.opts.checks .opt').forEach(opt => {
-    opt.addEventListener('click', () => { opt.classList.toggle('on'); recalc(); });
+    opt.addEventListener('click', () => { opt.classList.toggle('on'); updateSummary(); });
   });
+  if (couleursInput) couleursInput.addEventListener('input', updateSummary);
 
-  const linesEl = document.getElementById('summaryLines');
-  const totalEl = document.getElementById('sumTotal');
-  const acompteEl = document.getElementById('sumAcompte');
-  const resteEl = document.getElementById('sumReste');
-
-  function recalc() {
-    const lines = [];
-    total = 0;
-    const size = sel('taille');
-    if (size) { const p = +size.dataset.price; total += p; lines.push({ label: 'Base — ' + size.dataset.val, price: p, base: true }); }
-    ['ganache', 'creme', 'fourrage'].forEach(g => {
-      const o = sel(g);
-      if (o) { const p = +o.dataset.price; total += p; lines.push({ label: o.dataset.val, price: p }); }
-    });
-    document.querySelectorAll('.opts.checks .opt.on').forEach(o => {
-      const p = +o.dataset.price; total += p; lines.push({ label: o.dataset.val, price: p });
-    });
-    if (!size) {
-      linesEl.innerHTML = '<li class="empty">Commencez par choisir une taille…</li>';
-      totalEl.textContent = '—'; acompteEl.textContent = '—'; resteEl.textContent = '—';
-      return;
-    }
-    linesEl.innerHTML = lines.map(l => {
-      const val = l.base ? l.price + ' CHF' : (l.price > 0 ? '+' + l.price + ' CHF' : 'inclus');
-      return `<li><span>${l.label}</span><span class="${l.price > 0 ? '' : 'free'}">${val}</span></li>`;
-    }).join('');
-    acompte = Math.round(total * 0.30 / 5) * 5;
-    reste = total - acompte;
-    totalEl.textContent = total + ' CHF';
-    acompteEl.textContent = acompte + ' CHF';
-    resteEl.textContent = reste + ' CHF';
+  // ── récap des choix (SANS prix) ──
+  const LABELS = { genoise: 'Génoise', creme: 'Crème', garniture: 'Garniture', coulis: 'Coulis' };
+  function row(label, val) { return `<li><span>${label}</span><span>${val}</span></li>`; }
+  function updateSummary() {
+    if (!currentType) { linesEl.innerHTML = '<li class="empty">Vos choix s\'afficheront ici…</li>'; return; }
+    const L = [row('Type', currentType === 'layer' ? 'Layer Cake' : 'Gâteau à étages')];
+    if (currentType === 'layer') { const s = sel('taille'); if (s) L.push(row('Taille', s.dataset.val)); const f = sel('forme'); if (f) L.push(row('Forme', f.dataset.val)); }
+    else { const s = sel('invites'); if (s) L.push(row('Invités', s.dataset.val)); const n = sel('niveaux'); if (n) L.push(row('Niveaux', n.dataset.val)); }
+    ['genoise', 'creme', 'garniture', 'coulis'].forEach(g => { const o = sel(g); if (o) L.push(row(LABELS[g], o.dataset.val)); });
+    const coul = couleursInput.value.trim(); if (coul) L.push(row('Couleurs', coul));
+    const deco = Array.from(document.querySelectorAll('.opts.checks .opt.on')).map(o => o.dataset.val);
+    if (deco.length) L.push(row('Décoration', deco.join(', ')));
+    if (dateInput.value && chosenTime) L.push(row('Retrait', frenchDate(dateInput.value) + ' à ' + chosenTime));
+    linesEl.innerHTML = L.join('');
   }
 
+  // ── estimation INTERNE (fourchette) ──
+  function daysUntil(iso) { const t = new Date(); t.setHours(0, 0, 0, 0); return Math.round((new Date(iso + 'T00:00:00') - t) / 86400000); }
+  function urgentPct() {
+    const iso = dateInput.value; if (!iso) return 0;
+    const d = daysUntil(iso);
+    if (currentType === 'layer') { if (d < 3) return 0.40; if (d < 4) return 0.20; return 0; }
+    const n = sel('niveaux'); const lvl = n ? n.dataset.val : '2 niveaux';
+    if (lvl[0] === '4') return d < 21 ? 0.40 : 0;
+    if (lvl[0] === '3') return d < 14 ? 0.30 : 0;
+    return d < 7 ? 0.20 : 0;
+  }
+  function computeEstimate() {
+    if (!currentType) return null;
+    const P = PRICING[currentType];
+    let min = P.base, max = P.base;
+    const add = p => { if (Array.isArray(p)) { min += p[0]; max += p[1]; } else { min += p; max += p; } };
+    const s = sel(P.sizeGroup); if (s) add(P.size[s.dataset.val] ?? 0);
+    const ex = sel(P.extraGroup); if (ex) add(P.extra[ex.dataset.val] ?? 0);
+    const g = sel('genoise'); if (g) add(GENOISE[g.dataset.val] ?? 0);
+    const c = sel('creme'); if (c) add(CREME[c.dataset.val] ?? 0);
+    const ga = sel('garniture'); if (ga) add(GARNITURE[ga.dataset.val] ?? 0);
+    const co = sel('coulis'); if (co) add(COULIS[co.dataset.val] ?? 0);
+    document.querySelectorAll('.opts.checks .opt.on').forEach(o => { let p = DECO[o.dataset.val]; if (p === 'DORE') p = P.doreDeco; add(p ?? 0); });
+    const pct = urgentPct();
+    if (pct) { min = Math.round(min * (1 + pct)); max = Math.round(max * (1 + pct)); }
+    return { min, max, pct };
+  }
+  function estimationText() {
+    const e = computeEstimate(); if (!e) return '';
+    const range = e.min !== e.max ? e.min + ' à ' + e.max + ' CHF' : e.min + ' CHF';
+    const notes = [];
+    if (e.pct) notes.push('commande urgente +' + Math.round(e.pct * 100) + '%');
+    const ga = sel('garniture'); if (ga && ga.dataset.val === 'Autre') notes.push('garniture « Autre » à chiffrer');
+    if (document.querySelector('.opts.checks .opt.on[data-val="Autre déco"]')) notes.push('déco « Autre » à chiffrer');
+    if (currentType === 'etages') notes.push('montage complexe éventuel +30 à +80');
+    return '~' + range + (notes.length ? ' (' + notes.join(' ; ') + ')' : '');
+  }
+
+  // ── photos ──
   const photoInput = document.getElementById('cfgPhotos');
   const preview = document.getElementById('photoPreview');
   photoInput.addEventListener('change', () => {
@@ -755,33 +897,19 @@ if (cakeForm) {
     });
   }
 
-  const dateInput = document.getElementById('cfgDate');
+  // ── date + créneaux ──
   const slotsEl = document.getElementById('slots');
   const slotHint = document.getElementById('slotHint');
   dateInput.min = new Date().toISOString().split('T')[0];
-
-  // Horaires d'ouverture — À VALIDER avec Joudia. Index : 0=dimanche … 6=samedi.
-  const SCHEDULE = {
-    0: [],
-    1: [],
-    2: ['09:30', '11:00', '14:00', '16:00', '17:30'],
-    3: ['09:30', '11:00', '14:00', '16:00', '17:30'],
-    4: ['09:30', '11:00', '14:00', '16:00', '17:30'],
-    5: ['09:30', '11:00', '14:00', '16:00', '17:30'],
-    6: ['09:00', '10:30', '12:00']
-  };
-  function isFull(iso, time) {
-    let h = 0; const s = iso + time;
-    for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
-    return h % 5 === 0;
-  }
+  const SCHEDULE = { 0: [], 1: [], 2: ['09:30', '11:00', '14:00', '16:00', '17:30'], 3: ['09:30', '11:00', '14:00', '16:00', '17:30'], 4: ['09:30', '11:00', '14:00', '16:00', '17:30'], 5: ['09:30', '11:00', '14:00', '16:00', '17:30'], 6: ['09:00', '10:30', '12:00'] };
+  function isFull(iso, time) { let h = 0; const s = iso + time; for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0; return h % 5 === 0; }
   function renderSlots() {
     chosenTime = null;
     slotsEl.innerHTML = '';
     const iso = dateInput.value;
     if (!iso) { slotsEl.hidden = true; slotHint.hidden = false; slotHint.textContent = 'Choisissez d\'abord une date ci-dessus.'; return; }
     const times = SCHEDULE[new Date(iso + 'T00:00:00').getDay()] || [];
-    if (!times.length) { slotsEl.hidden = true; slotHint.hidden = false; slotHint.textContent = 'Fermé ce jour-là — choisissez une autre date (mardi à samedi).'; return; }
+    if (!times.length) { slotsEl.hidden = true; slotHint.hidden = false; slotHint.textContent = 'Fermé ce jour-là, choisissez une autre date (mardi à samedi).'; updateSummary(); return; }
     slotHint.hidden = true; slotsEl.hidden = false;
     times.forEach(t => {
       const full = isFull(iso, t);
@@ -793,72 +921,71 @@ if (cakeForm) {
       if (full) { b.disabled = true; }
       else b.addEventListener('click', () => {
         slotsEl.querySelectorAll('.slot').forEach(x => x.classList.remove('on'));
-        b.classList.add('on');
-        chosenTime = t;
+        b.classList.add('on'); chosenTime = t; updateSummary();
       });
       slotsEl.appendChild(b);
     });
+    updateSummary();
   }
   dateInput.addEventListener('change', renderSlots);
   renderSlots();
 
-  const submitBtn = document.getElementById('configSubmit');
+  // ── validation + envoi ──
   let errEl = null;
-  function showError(msg) {
-    if (!errEl) { errEl = document.createElement('p'); errEl.className = 'form-note'; errEl.style.color = '#e0a04a'; submitBtn.insertAdjacentElement('afterend', errEl); }
-    errEl.textContent = msg;
-  }
+  function showError(msg) { if (!errEl) { errEl = document.createElement('p'); errEl.className = 'form-note'; errEl.style.color = '#e0a04a'; submitBtn.insertAdjacentElement('afterend', errEl); } errEl.textContent = msg; }
   function clearError() { if (errEl) errEl.textContent = ''; }
+  function frenchDate(iso) { if (!iso) return ''; try { return new Date(iso + 'T00:00:00').toLocaleDateString('fr-CH', { day: 'numeric', month: 'long', year: 'numeric' }); } catch { return iso; } }
 
-  function frenchDate(iso) {
-    if (!iso) return '';
-    try { return new Date(iso + 'T00:00:00').toLocaleDateString('fr-CH', { day: 'numeric', month: 'long', year: 'numeric' }); }
-    catch { return iso; }
-  }
   function buildRecap() {
     const deco = Array.from(document.querySelectorAll('.opts.checks .opt.on')).map(o => o.dataset.val);
     const txt = document.getElementById('cfgTexte').value.trim();
-    return [
-      'Taille : ' + (sel('taille') ? sel('taille').dataset.val : '-'),
-      'Ganache : ' + (sel('ganache') ? sel('ganache').dataset.val : '-'),
-      'Crème : ' + (sel('creme') ? sel('creme').dataset.val : '-'),
-      'Fourrage : ' + (sel('fourrage') ? sel('fourrage').dataset.val : '-'),
-      'Décoration : ' + (deco.length ? deco.join(', ') : 'aucune'),
-      txt ? 'Texte sur le gâteau : ' + txt : 'Texte : -',
-      'Photos d\'inspiration : ' + photos.length,
-      'Retrait : ' + frenchDate(dateInput.value) + ' à ' + chosenTime,
-      'TOTAL : ' + total + ' CHF — Acompte : ' + acompte + ' CHF — Reste : ' + reste + ' CHF'
-    ].join('\n');
+    const com = document.getElementById('cfgCommentaires').value.trim();
+    const L = ['Type : ' + (currentType === 'layer' ? 'Layer Cake' : 'Gâteau à étages')];
+    if (currentType === 'layer') { L.push('Taille : ' + (sel('taille') ? sel('taille').dataset.val : '-')); L.push('Forme : ' + (sel('forme') ? sel('forme').dataset.val : '-')); }
+    else { L.push('Invités : ' + (sel('invites') ? sel('invites').dataset.val : '-')); L.push('Niveaux : ' + (sel('niveaux') ? sel('niveaux').dataset.val : '-')); }
+    L.push('Génoise : ' + (sel('genoise') ? sel('genoise').dataset.val : '-'));
+    L.push('Crème : ' + (sel('creme') ? sel('creme').dataset.val : '-'));
+    L.push('Garniture : ' + (sel('garniture') ? sel('garniture').dataset.val : '-'));
+    L.push('Coulis : ' + (sel('coulis') ? sel('coulis').dataset.val : '-'));
+    L.push('Couleurs : ' + (couleursInput.value.trim() || '-'));
+    L.push('Décoration : ' + (deco.length ? deco.join(', ') : 'aucune'));
+    L.push('Texte : ' + (txt || '-'));
+    L.push('Photos d\'inspiration : ' + photos.length);
+    if (com) L.push('Commentaires : ' + com);
+    L.push('Retrait : ' + frenchDate(dateInput.value) + ' à ' + chosenTime);
+    L.push('ESTIMATION INTERNE : ' + estimationText());
+    return L.join('\n');
   }
 
   cakeForm.addEventListener('submit', async e => {
     e.preventDefault();
     clearError();
     const missing = [];
-    if (!sel('taille')) missing.push('la taille');
-    if (!sel('ganache')) missing.push('la ganache');
+    if (!currentType) missing.push('le type de gâteau');
+    if (currentType === 'layer') { if (!sel('taille')) missing.push('la taille'); if (!sel('forme')) missing.push('la forme'); }
+    else if (currentType === 'etages') { if (!sel('invites')) missing.push('le nombre d\'invités'); if (!sel('niveaux')) missing.push('le nombre de niveaux'); }
+    if (!sel('genoise')) missing.push('la génoise');
     if (!sel('creme')) missing.push('la crème');
-    if (!sel('fourrage')) missing.push('le fourrage');
+    if (!sel('garniture')) missing.push('la garniture');
+    if (!sel('coulis')) missing.push('le coulis');
     if (!dateInput.value) missing.push('la date');
     if (!chosenTime) missing.push('l\'heure de retrait');
     if (missing.length) { showError('Il manque encore : ' + missing.join(', ') + '.'); return; }
     if (!cakeForm.checkValidity()) { cakeForm.reportValidity(); return; }
 
     document.getElementById('recapField').value = buildRecap();
-    document.getElementById('prixField').value = total + ' CHF (acompte ' + acompte + ' CHF)';
+    document.getElementById('estimationField').value = estimationText();
 
     const isDemo = cakeForm.action.includes('VOTRE_ID_FORMSPREE');
     submitBtn.innerHTML = 'Envoi en cours…';
     submitBtn.disabled = true;
     const finish = ok => {
-      if (ok) { showConfirm(); }
+      if (ok) showConfirm();
       else { submitBtn.innerHTML = 'Erreur, réessayez'; submitBtn.disabled = false; setTimeout(() => { submitBtn.innerHTML = 'Envoyer ma demande <span>→</span>'; }, 3000); }
     };
     if (isDemo) { setTimeout(() => finish(true), 800); return; }
-    try {
-      const res = await fetch(cakeForm.action, { method: 'POST', body: new FormData(cakeForm), headers: { Accept: 'application/json' } });
-      finish(res.ok);
-    } catch { finish(false); }
+    try { const res = await fetch(cakeForm.action, { method: 'POST', body: new FormData(cakeForm), headers: { Accept: 'application/json' } }); finish(res.ok); }
+    catch { finish(false); }
   });
 
   function showConfirm() {
@@ -867,10 +994,11 @@ if (cakeForm) {
     document.getElementById('confirmTitle').textContent = 'Merci ' + prenom + ' !';
     document.getElementById('confirmSms').textContent =
       'Bonjour ' + prenom + ',\n\n' +
-      'Votre commande de gâteau pour le ' + frenchDate(dateInput.value) + ' à ' + chosenTime + ' a bien été enregistrée.\n\n' +
-      'Merci pour votre confiance.\nMaison Joudia';
+      'Votre demande de gâteau pour le ' + frenchDate(dateInput.value) + ' à ' + chosenTime + ' a bien été enregistrée.\n\n' +
+      'Joudia vous envoie le devis sous 24h.\n\nMerci pour votre confiance.\nMaison Joudia';
     cakeForm.hidden = true;
     document.querySelector('.config-intro').hidden = true;
+    document.getElementById('typeCards').hidden = true;
     confirm.hidden = false;
     confirm.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
@@ -878,17 +1006,20 @@ if (cakeForm) {
   document.getElementById('confirmReset').addEventListener('click', () => {
     cakeForm.reset();
     document.querySelectorAll('.opt.on').forEach(o => o.classList.remove('on'));
-    photos = []; renderPhotos(); chosenTime = null; renderSlots();
-    recalc(); clearError();
+    typeCards.forEach(c => c.classList.remove('on'));
+    currentType = null; photos = []; renderPhotos(); chosenTime = null; renderSlots();
+    clearError();
     submitBtn.innerHTML = 'Envoyer ma demande <span>→</span>';
     submitBtn.disabled = false;
     document.getElementById('configConfirm').hidden = true;
-    cakeForm.hidden = false;
+    cakeForm.hidden = true;
     document.querySelector('.config-intro').hidden = false;
+    document.getElementById('typeCards').hidden = false;
+    updateSummary();
     document.getElementById('configurateur').scrollIntoView({ behavior: 'smooth' });
   });
 
-  recalc();
+  updateSummary();
 }
 </script>
 </body>
