@@ -102,6 +102,10 @@ h1,h2,h3,h4{ font-family:var(--font-display); font-weight:500; color:var(--cream
 .ph-ico{ width:60px; height:60px; opacity:.38; }
 .ph-cover .ph-ico{ width:90px; height:90px; }
 .scene-bg .ph-ico, .scene-bg .ph::after{ display:none; }
+.scene-bg img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.55); }
+.scene-bg.dim img{ filter:brightness(.42); }
+.cake-photo img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform 1.2s var(--ease); }
+.cake:hover .cake-photo img{ transform:scale(1.05); }
 .hero .scene-shade{ background:linear-gradient(180deg, rgba(13,10,7,.5) 0%, rgba(13,10,7,.25) 30%, rgba(13,10,7,.85) 100%); }
 .hero-content{ max-width:1180px; }
 .hero-eyebrow{ display:inline-flex; align-items:center; gap:14px; font-size:.74rem; letter-spacing:.22em; text-transform:uppercase; color:var(--gold-light); margin-bottom:28px; }
@@ -335,7 +339,7 @@ h1,h2,h3,h4{ font-family:var(--font-display); font-weight:500; color:var(--cream
 
 <!-- ░░ HERO ░░ -->
 <header class="scene hero" id="home">
-  <div class="scene-bg" data-parallax="0.2"><div class="ph ph-cover" data-label="Photo plein écran — gâteau signature"><svg viewBox="0 0 64 64" class="ph-ico" fill="none" stroke="currentColor" stroke-width="1"><path d="M10 54h44M14 54V34c0-7 5-11 18-11s18 4 18 11v20M14 42h36M32 23v-9M27 18l5-5 5 5"/></svg></div></div>
+  <div class="scene-bg" data-parallax="0.2"><img src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?auto=format&fit=crop&w=1700&q=80" alt=""></div>
   <div class="scene-shade"></div>
   <div class="scene-content hero-content">
     <div class="hero-eyebrow reveal"><span class="line"></span> Cake design · Lausanne</div>
@@ -354,7 +358,7 @@ h1,h2,h3,h4{ font-family:var(--font-display); font-weight:500; color:var(--cream
 
 <!-- ░░ MANIFESTE ░░ -->
 <section class="scene manifeste" id="manifeste">
-  <div class="scene-bg dim" data-parallax="0.15"><div class="ph ph-cover" data-label="Photo d'ambiance plein écran"><svg viewBox="0 0 64 64" class="ph-ico" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 50h40M16 50V36c0-6 5-10 16-10s16 4 16 10v14M16 43h32"/></svg></div></div>
+  <div class="scene-bg dim" data-parallax="0.15"><img src="https://images.unsplash.com/photo-1610670444950-0b29430891b4?auto=format&fit=crop&w=1700&q=80" alt=""></div>
   <div class="scene-shade strong"></div>
   <div class="scene-content center">
     <p class="manifeste-text reveal">Créé pour être au cœur de vos célébrations, de vos photos et de <span class="it">vos souvenirs</span>.</p>
@@ -369,12 +373,12 @@ h1,h2,h3,h4{ font-family:var(--font-display); font-weight:500; color:var(--cream
     <p class="showcase-hint" id="showcaseHint">Faites défiler &nbsp;→</p>
   </div>
   <div class="showcase-track" id="showcaseTrack">
-    <article class="cake"><div class="cake-photo"><div class="ph ph-cover" data-label="Photo — Layer Cake"><svg viewBox="0 0 64 64" class="ph-ico" fill="none" stroke="currentColor" stroke-width="1"><path d="M14 50h36M18 50V40h28v10M22 40V30h20v10M26 30V21h12v9M32 21v-6M28 17l4-3 4 3"/></svg></div></div><div class="cake-info"><span class="cake-index">01 — 06</span><h3>Layer Cake Signature</h3><p>Étages de génoise moelleuse et crème onctueuse, finition lisse et décor sur mesure.</p><div class="cake-foot"><span class="price">dès CHF 75.–</span><button class="btn-order">Composer le mien <span>→</span></button></div></div></article>
-    <article class="cake"><div class="cake-photo"><div class="ph ph-cover" data-label="Photo — Wedding Cake"><svg viewBox="0 0 64 64" class="ph-ico" fill="none" stroke="currentColor" stroke-width="1"><path d="M16 52h32M22 52V41h20v11M26 41V31h12v10M29 31V23h6v8M32 23v-7M28 19l4-4 4 4"/></svg></div></div><div class="cake-info"><span class="cake-index">02 — 06</span><h3>Wedding Cake</h3><p>Plusieurs étages, fleurs et finitions précieuses. La pièce centrale de votre mariage.</p><div class="cake-foot"><span class="price">sur devis</span><button class="btn-order">Composer le mien <span>→</span></button></div></div></article>
-    <article class="cake"><div class="cake-photo"><div class="ph ph-cover" data-label="Photo — Number / Letter Cake"><svg viewBox="0 0 64 64" class="ph-ico" fill="none" stroke="currentColor" stroke-width="1"><path d="M24 48V20l-7 5M40 20h-8v11h8v17h-8"/><circle cx="19" cy="14" r="2"/><circle cx="45" cy="14" r="2"/></svg></div></div><div class="cake-info"><span class="cake-index">03 — 06</span><h3>Number & Letter Cake</h3><p>Chiffres et lettres en sablé délicat, crème, fruits frais et fleurs.</p><div class="cake-foot"><span class="price">dès CHF 75.–</span><button class="btn-order">Composer le mien <span>→</span></button></div></div></article>
-    <article class="cake"><div class="cake-photo"><div class="ph ph-cover" data-label="Photo — Drip Cake"><svg viewBox="0 0 64 64" class="ph-ico" fill="none" stroke="currentColor" stroke-width="1"><path d="M16 50h32M18 50V28c0-3 3-5 14-5s14 2 14 5v22"/><path d="M18 30c3 4 3 7 6 4s3-6 6-3 3 6 6 3 3-6 6-3 4 5 4 5"/></svg></div></div><div class="cake-info"><span class="cake-index">04 — 06</span><h3>Drip Cake</h3><p>Coulures gourmandes de chocolat ou caramel, garnitures généreuses.</p><div class="cake-foot"><span class="price">dès CHF 75.–</span><button class="btn-order">Composer le mien <span>→</span></button></div></div></article>
-    <article class="cake"><div class="cake-photo"><div class="ph ph-cover" data-label="Photo — Naked Cake"><svg viewBox="0 0 64 64" class="ph-ico" fill="none" stroke="currentColor" stroke-width="1"><path d="M16 50h32M18 50V32c0-4 4-7 14-7s14 3 14 7v18M18 39h28M18 32h28"/><circle cx="26" cy="20" r="2"/><circle cx="38" cy="22" r="2"/></svg></div></div><div class="cake-info"><span class="cake-index">05 — 06</span><h3>Naked Cake</h3><p>Étages apparents, crème délicate et fruits de saison. L'élégance naturelle.</p><div class="cake-foot"><span class="price">dès CHF 75.–</span><button class="btn-order">Composer le mien <span>→</span></button></div></div></article>
-    <article class="cake"><div class="cake-photo"><div class="ph ph-cover" data-label="Photo — Gâteau sculpté"><svg viewBox="0 0 64 64" class="ph-ico" fill="none" stroke="currentColor" stroke-width="1"><path d="M14 52h36M20 52V34c0-8 5-14 12-14s12 6 12 14v18M28 24c-2-4 0-9 4-9s6 5 4 9"/></svg></div></div><div class="cake-info"><span class="cake-index">06 — 06</span><h3>Gâteau sculpté sur mesure</h3><p>Une forme, un thème, un personnage&nbsp;: un gâteau entièrement modelé.</p><div class="cake-foot"><span class="price">sur devis</span><button class="btn-order">Composer le mien <span>→</span></button></div></div></article>
+    <article class="cake"><div class="cake-photo"><img src="https://images.unsplash.com/photo-1577998474517-7eeeed4e448a?auto=format&fit=crop&w=1200&q=80" alt="Layer Cake" loading="lazy"></div><div class="cake-info"><span class="cake-index">01 — 06</span><h3>Layer Cake Signature</h3><p>Étages de génoise moelleuse et crème onctueuse, finition lisse et décor sur mesure.</p><div class="cake-foot"><span class="price">dès CHF 75.–</span><button class="btn-order">Composer le mien <span>→</span></button></div></div></article>
+    <article class="cake"><div class="cake-photo"><img src="https://images.unsplash.com/photo-1503525642560-ecca5e2e49e9?auto=format&fit=crop&w=1200&q=80" alt="Wedding Cake" loading="lazy"></div><div class="cake-info"><span class="cake-index">02 — 06</span><h3>Wedding Cake</h3><p>Plusieurs étages, fleurs et finitions précieuses. La pièce centrale de votre mariage.</p><div class="cake-foot"><span class="price">sur devis</span><button class="btn-order">Composer le mien <span>→</span></button></div></div></article>
+    <article class="cake"><div class="cake-photo"><img src="https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?auto=format&fit=crop&w=1200&q=80" alt="Number & Letter Cake" loading="lazy"></div><div class="cake-info"><span class="cake-index">03 — 06</span><h3>Number & Letter Cake</h3><p>Chiffres et lettres en sablé délicat, crème, fruits frais et fleurs.</p><div class="cake-foot"><span class="price">dès CHF 75.–</span><button class="btn-order">Composer le mien <span>→</span></button></div></div></article>
+    <article class="cake"><div class="cake-photo"><img src="https://images.unsplash.com/photo-1602351447937-745cb720612f?auto=format&fit=crop&w=1200&q=80" alt="Drip Cake" loading="lazy"></div><div class="cake-info"><span class="cake-index">04 — 06</span><h3>Drip Cake</h3><p>Coulures gourmandes de chocolat ou caramel, garnitures généreuses.</p><div class="cake-foot"><span class="price">dès CHF 75.–</span><button class="btn-order">Composer le mien <span>→</span></button></div></div></article>
+    <article class="cake"><div class="cake-photo"><img src="https://images.unsplash.com/photo-1519654793190-2e8a4806f1f2?auto=format&fit=crop&w=1200&q=80" alt="Naked Cake" loading="lazy"></div><div class="cake-info"><span class="cake-index">05 — 06</span><h3>Naked Cake</h3><p>Étages apparents, crème délicate et fruits de saison. L'élégance naturelle.</p><div class="cake-foot"><span class="price">dès CHF 75.–</span><button class="btn-order">Composer le mien <span>→</span></button></div></div></article>
+    <article class="cake"><div class="cake-photo"><img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&w=1200&q=80" alt="Gâteau sculpté" loading="lazy"></div><div class="cake-info"><span class="cake-index">06 — 06</span><h3>Gâteau sculpté sur mesure</h3><p>Une forme, un thème, un personnage&nbsp;: un gâteau entièrement modelé.</p><div class="cake-foot"><span class="price">sur devis</span><button class="btn-order">Composer le mien <span>→</span></button></div></div></article>
   </div>
   <div class="showcase-nav">
     <button class="sc-arrow" id="scPrev" aria-label="Précédent">←</button>
@@ -385,7 +389,7 @@ h1,h2,h3,h4{ font-family:var(--font-display); font-weight:500; color:var(--cream
 
 <!-- ░░ SUR MESURE ░░ -->
 <section class="scene sur-mesure" id="sur-mesure">
-  <div class="scene-bg dim" data-parallax="0.18"><div class="ph ph-cover" data-label="Photo plein écran — détail de gâteau"><svg viewBox="0 0 64 64" class="ph-ico" fill="none" stroke="currentColor" stroke-width="1"><circle cx="32" cy="32" r="20"/><circle cx="32" cy="32" r="12"/><circle cx="32" cy="32" r="4"/></svg></div></div>
+  <div class="scene-bg dim" data-parallax="0.18"><img src="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?auto=format&fit=crop&w=1700&q=80" alt=""></div>
   <div class="scene-shade side"></div>
   <div class="scene-content">
     <div class="panel reveal">
@@ -404,7 +408,7 @@ h1,h2,h3,h4{ font-family:var(--font-display); font-weight:500; color:var(--cream
 
 <!-- ░░ ATELIER ░░ -->
 <section class="scene atelier" id="atelier">
-  <div class="scene-bg dim" data-parallax="0.12"><div class="ph ph-cover" data-label="Photo plein écran — l'atelier"><svg viewBox="0 0 64 64" class="ph-ico" fill="none" stroke="currentColor" stroke-width="1"><circle cx="32" cy="22" r="9"/><path d="M15 50c0-10 8-16 17-16s17 6 17 16"/></svg></div></div>
+  <div class="scene-bg dim" data-parallax="0.12"><img src="https://images.unsplash.com/photo-1731576089270-9e806089a40f?auto=format&fit=crop&w=1700&q=80" alt=""></div>
   <div class="scene-shade strong"></div>
   <div class="scene-content center">
     <div class="reveal"><span class="label">L'atelier</span><h2 class="title">De l'idée au gâteau.</h2></div>
